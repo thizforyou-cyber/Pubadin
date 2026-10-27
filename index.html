@@ -2,21 +2,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NET Public Administration</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pubadin | UGC NET Public Administration</title>
+<style>
+:root {
+  --bg:#f5f7fb; --card:#fff; --text:#17233c;
+  --muted:#66738a; --primary:#4f46e5; --line:#e4e8f1;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; font-family:Arial,sans-serif;
+  background:var(--bg); color:var(--text);
+}
+header {
+  background:#17233c; color:white; padding:20px 6%;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; flex-wrap:wrap;
+}
+.brand { font-size:24px; font-weight:800; }
+.brand span { color:#a5b4fc; }
+header p { margin:5px 0 0; color:#d4d9e7; font-size:13px; }
+main { max-width:1100px; margin:auto; padding:26px 18px 50px; }
+.hero {
+  background:linear-gradient(120deg,#4f46e5,#7c3aed);
+  color:white; padding:28px; border-radius:20px; margin-bottom:22px;
+}
+.hero h1 { margin:0 0 10px; font-size:clamp(25px,4vw,36px); }
+.hero p { line-height:1.6; max-width:650px; }
+button,input { font:inherit; }
+button {
+  cursor:pointer; border:0; border-radius:10px; padding:11px 15px;
+  background:var(--primary); color:white; font-weight:700;
+}
+button:hover { opacity:.88; }
+.hero button { background:white; color:#4338ca; }
+.search { width:100%; padding:14px; border:1px solid var(--line);
+  border-radius:12px; margin:0 0 22px; background:white; }
+.stats,.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; }
+.stat,.card { background:var(--card); padding:19px; border:1px solid var(--line); border-radius:15px; }
+.stat strong { display:block; font-size:28px; margin:8px 0; }
+.stat small,.muted { color:var(--muted); }
+.section-title { margin:30px 0 14px; }
+.card h3 { margin:8px 0; }
+.card p { color:var(--muted); line-height:1.5; }
+.card button { margin-top:7px; }
+.tag { color:#4f46e5; font-weight:700; font-size:12px; text-transform:uppercase; }
+.progress { height:8px; background:#e5e7eb; border-radius:9px; overflow:hidden; margin:12px 0; }
+.progress div { height:100%; width:0; background:#4f46e5; transition:width .2s; }
+.panel { background:white; padding:22px; border:1px solid var(--line); border-radius:16px; margin-top:20px; }
+.option { display:block; text-align:left; width:100%; background:#f0f2ff; color:#17233c; margin:9px 0; }
+.option.correct { background:#dcfce7; }
+.option.wrong { background:#fee2e2; }
+footer { text-align:center; padding:25px; color:var(--muted); font-size:13px; }
+[hidden] { display:none !important; }
+</style>
 </head>
 <body>
-  <h1>UGC NET Public Administration</h1>
+<header>
+  <div>
+    <div class="brand">Pub<span>adin</span> 📚</div>
+    <p>Your UGC NET Public Administration study companion</p>
+  </div>
+  <div>Learn · Practise · Revise</div>
+</header>
 
-  <p>Your personal study and revision space.</p>
+<main>
+  <section class="hero">
+    <h1>Small steps. Strong concepts. Better revision.</h1>
+    <p>Explore the syllabus, practise questions, revise key concepts and build your preparation one day at a time.</p>
+    <button onclick="showSection('syllabus')">Explore syllabus →</button>
+  </section>
 
-  <h2>Start Learning</h2>
+  <input class="search" id="search" placeholder="🔎 Search units, topics or keywords..." aria-label="Search study content">
 
-  <button>Study the Syllabus</button>
-  <button>Practice PYQs</button>
-  <button>Revise Topics</button>
+  <div class="stats">
+    <div class="stat"><span class="muted">Units explored</span><strong id="unitCount">0 / 10</strong><small>Mark a unit as studied</small></div>
+    <div class="stat"><span class="muted">Questions answered</span><strong id="questionCount">0</strong><small>Practice at your own pace</small></div>
+    <div class="stat"><span class="muted">Correct answers</span><strong id="correctCount">0</strong><small>Build accuracy over time</small></div>
+  </div>
 
-  <p>Learn a little every day. Improve every attempt.</p>
+  <h2 class="section-title">Your study space</h2>
+  <div class="cards">
+    <article class="card"><div class="tag">01 · Learn</div><h3>Complete syllabus</h3><p>Explore the ten broad units of Public Administration.</p><button onclick="showSection('syllabus')">Open syllabus</button></article>
+    <article class="card"><div class="tag">02 · Practise</div><h3>PYQ practice</h3><p>Try sample questions with instant feedback.</p><button onclick="showSection('quiz')">Start practice</button></article>
+    <article class="card"><div class="tag">03 · Remember</div><h3>Flashcards</h3><p>Test your recall of important concepts.</p><button onclick="showSection('cards')">Revise now</button></article>
+    <article class="card"><div class="tag">04 · Improve</div><h3>Study progress</h3><p>Track units completed and questions answered.</p><button onclick="showSection('progress')">View progress</button></article>
+  </div>
+
+  <section class="panel" id="syllabus" hidden>
+    <h2>Public Administration syllabus</h2>
+    <p class="muted">A starter list of ten broad units. Check the current official UGC NET syllabus to confirm exact unit titles and subtopics.</p>
+    <div id="unitList" class="cards"></div>
+  </section>
+
+  <section class="panel" id="quiz" hidden>
+    <div class="tag">Practice zone</div>
+    <h2 id="quizTitle">Sample question</h2>
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="feedback" aria-live="polite"></p>
+    <button id="nextQuestion" onclick="nextQuestion()" hidden>Next question →</button>
+    <p class="muted">These are starter practice questions, not a verified collection of official previous-year questions.</p>
+  </section>
+
+  <section class="panel" id="cards" hidden>
+    <div class="tag">Active recall</div>
+    <h2>Flashcards</h2>
+    <p id="flashQuestion"></p>
+    <p id="flashAnswer" hidden></p>
+    <button id="reveal" onclick="revealCard()">Reveal answer</button>
+    <button onclick="nextCard()">Next flashcard →</button>
+  </section>
+
+  <section class="panel" id="progress" hidden>
+    <h2>Your progress</h2>
+    <p id="progressText">You have just started. Every completed session counts!</p>
+    <div class="progress"><div id="progressBar"></div></div>
+    <button onclick="resetProgress()">Reset progress</button>
+    <p class="muted">Progress is saved only in this browser on this device.</p>
+  </section>
+</main>
+<footer>Pubadin · Learn consistently, revise intelligently.</footer>
+
+<script>
+const units = [
+["Introduction to Public Administration","Meaning, scope, evolution and approaches"],
+["Administrative Thought","Taylor, Fayol, Weber, Mayo and major thinkers"],
+["Indian Administration","Constitution, Union, state and district administration"],
+["Development Administration","Development, governance and public policy"],
+["Personnel Administration","Recruitment, training, promotion and civil services"],
+["Public Policy","Policy formulation, implementation and evaluation"],
+["Governance and Good Governance","Accountability, transparency and citizen participation"],
+["Comparative Public Administration","Comparative approaches and administrative systems"],
+["Financial Administration","Budgeting, audit and financial control"],
+["Research Methods","Research design, methods, data and analysis"]
+];
+
+const questions = [
+{q:"Who is commonly associated with the principles of scientific management?",o:["Max Weber","F. W. Taylor","Herbert Simon","Elton Mayo"],a:1,e:"F. W. Taylor is associated with scientific management."},
+{q:"Who wrote the book Administrative Behavior?",o:["Herbert A. Simon","Woodrow Wilson","Henri Fayol","Luther Gulick"],a:0,e:"Herbert A. Simon published Administrative Behavior in 1947."},
+{q:"Which thinker is associated with the ideal type of bureaucracy?",o:["Abraham Maslow","Max Weber","Chester Barnard","F. W. Taylor"],a:1,e:"Max Weber developed the influential ideal-type model of bureaucracy."},
+{q:"The principle of unity of command is associated with which thinker?",o:["Henri Fayol","Mary Parker Follett","Herbert Simon","Dwight Waldo"],a:0,e:"Henri Fayol identified unity of command as a management principle."},
+{q:"Which part of the Indian Constitution deals with the Union Public Service Commission?",o:["Part X","Part XIV","Part III","Part V only"],a:1,e:"Part XIV covers services under the Union and the States, including provisions for Public Service Commissions."}
+];
+
+const flashcards = [
+["Who is associated with scientific management?","Frederick Winslow Taylor."],
+["What is unity of command?","The principle that an employee should receive orders from one superior."],
+["What is public accountability?","The obligation of public officials to explain and justify their actions and face appropriate consequences."],
+["What is bureaucracy in Weber's model?","A formal organisation characterised by hierarchy, rules, defined responsibilities and impersonal procedures."]
+];
+
+let answered = Number(localStorage.getItem("pubadin_answered") || 0);
+let correct = Number(localStorage.getItem("pubadin_correct") || 0);
+let studied = JSON.parse(localStorage.getItem("pubadin_studied") || "[]");
+let qi = 0, fi = 0, locked = false;
+
+function showSection(id) {
+  ["syllabus","quiz","cards","progress"].forEach(x => document.getElementById(x).hidden = x !== id);
+  if(id==="syllabus") renderUnits();
+  if(id==="quiz") renderQuestion();
+  if(id==="cards") renderFlashcard();
+  if(id==="progress") renderProgress();
+  document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
+}
+function renderUnits(filter="") {
+  const list = document.getElementById("unitList");
+  list.innerHTML = "";
+  units.forEach((u,i) => {
+    if(!(u.join(" ")+" Unit "+(i+1)).toLowerCase().includes(filter.toLowerCase())) return;
+    const el = document.createElement("article");
+    el.className="card";
+    el.innerHTML = `<div class="tag">Unit ${i+1}</div><h3></h3><p></p><button></button>`;
+    el.querySelector("h3").textContent=u[0];
+    el.querySelector("p").textContent=u[1];
+    const b=el.querySelector("button");
+    b.textContent=studied.includes(i)?"✓ Studied":"Mark as studied";
+    b.onclick=()=>{studied=studied.includes(i)?studied.filter(n=>n!==i):[...studied,i];localStorage.setItem("pubadin_studied",JSON.stringify(studied));renderUnits(document.getElementById("search").value);updateStats();};
+    list.appendChild(el);
+  });
+}
+function renderQuestion() {
+  const q=questions[qi%questions.length]; locked=false;
+  document.getElementById("quizTitle").textContent=`Question ${(qi%questions.length)+1} of ${questions.length}`;
+  document.getElementById("question").textContent=q.q;
+  document.getElementById("feedback").textContent="";
+  document.getElementById("nextQuestion").hidden=true;
+  const box=document.getElementById("options");box.innerHTML="";
+  q.o.forEach((option,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+option;b.onclick=()=>checkAnswer(i,b);box.appendChild(b);});
+}
+function checkAnswer(i,button) {
+  if(locked)return;locked=true;
+  answered++;const q=questions[qi%questions.length];
+  document.querySelectorAll("#options button").forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add("correct");});
+  if(i===q.a){correct++;document.getElementById("feedback").textContent="Correct! "+q.e;}
+  else document.getElementById("feedback").textContent="Not quite. "+q.e;
+  localStorage.setItem("pubadin_answered",answered);localStorage.setItem("pubadin_correct",correct);
+  document.getElementById("nextQuestion").hidden=false;updateStats();
+}
+function nextQuestion(){qi++;renderQuestion();}
+function renderFlashcard(){document.getElementById("flashQuestion").textContent=flashcards[fi%flashcards.length][0];document.getElementById("flashAnswer").textContent=flashcards[fi%flashcards.length][1];document.getElementById("flashAnswer").hidden=true;document.getElementById("reveal").hidden=false;}
+function revealCard(){document.getElementById("flashAnswer").hidden=false;document.getElementById("reveal").hidden=true;}
+function nextCard(){fi++;renderFlashcard();}
+function updateStats(){document.getElementById("unitCount").textContent=studied.length+" / "+units.length;document.getElementById("questionCount").textContent=answered;document.getElementById("correctCount").textContent=correct;renderProgress();}
+function renderProgress(){const pct=Math.round(studied.length/units.length*100);document.getElementById("progressText").textContent=`${studied.length} of ${units.length} units marked studied. ${answered} questions answered; ${correct} correct.`;document.getElementById("progressBar").style.width=pct+"%";}
+function resetProgress(){if(confirm("Reset your saved study progress on this browser?")){answered=0;correct=0;studied=[];["pubadin_answered","pubadin_correct","pubadin_studied"].forEach(k=>localStorage.removeItem(k));updateStats();renderUnits();}}
+document.getElementById("search").addEventListener("input",e=>{const q=e.target.value.trim();renderUnits(q);if(q){document.getElementById("syllabus").hidden=false;}});
+updateStats();
+</script>
 </body>
 </html>
