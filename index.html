@@ -28,6 +28,7 @@
   <button class="navbtn" data-view="revision"><span class="ico">↻</span>Revision cards</button>
   <button class="navbtn" data-view="mindmaps"><span class="ico">⌘</span>Mind maps</button>
   <button class="navbtn" data-view="progress"><span class="ico">▥</span>My progress</button>
+  <button class="navbtn" data-view="resources"><span class="ico">↗</span>Explore resources</button>
   <div class="sidebar-note"><strong>Small daily wins</strong><br>Study one topic, answer a few questions, and revisit what you missed.</div>
 </aside>
 <main class="main">
@@ -96,6 +97,39 @@
   <p class="muted smalltext">Privacy note: this is a static website. It does not sync progress across browsers or devices. Download a backup before changing devices. Do not put passwords, API keys or sensitive personal information in this public project.</p>
 </section>
 <div class="footer">Pubadin · Built for personal UGC NET revision · Local browser storage</div>
+<section id="resources" class="view">
+  <div class="hero">
+    <div class="eyebrow">LEARN BEYOND YOUR NOTES</div>
+    <h1>Explore Resources</h1>
+    <p>Find explanations, research papers, videos and reliable exam resources.</p>
+  </div>
+
+  <div class="panel" style="padding:20px;margin:16px 0">
+    <h2>Search any topic</h2>
+    <form onsubmit="event.preventDefault();window.open('https://www.google.com/search?q='+encodeURIComponent(document.getElementById('resourceQuery').value+' UGC NET Public Administration'),'_blank')">
+      <input id="resourceQuery" type="text" placeholder="e.g. New Public Administration" required style="width:100%;padding:12px;margin:8px 0">
+      <button class="btn" type="submit">Search Google</button>
+    </form>
+  </div>
+  <div class="panel" style="padding:16px;margin:12px 0">
+    <h3>📚 Research papers</h3>
+    <a href="https://scholar.google.com/" target="_blank" rel="noopener">Open Google Scholar ↗</a>
+  </div>
+  <div class="panel" style="padding:16px;margin:12px 0">
+    <h3>🎥 Video lessons</h3>
+    <a href="https://www.youtube.com/results?search_query=UGC+NET+Public+Administration" target="_blank" rel="noopener">Find YouTube lessons ↗</a>
+  </div>
+  <div class="panel" style="padding:16px;margin:12px 0">
+    <h3>📖 Books</h3>
+    <a href="https://books.google.com/" target="_blank" rel="noopener">Open Google Books ↗</a>
+  </div>
+  <div class="panel" style="padding:16px;margin:12px 0">
+    <h3>🎓 Official exam resources</h3>
+    <a href="https://ugcnet.nta.nic.in/archive/" target="_blank" rel="noopener">NTA official archive ↗</a><br><br>
+    <a href="https://ugcnet.nta.ac.in/AnswerKey.html" target="_blank" rel="noopener">NTA answer keys ↗</a>
+  </div>
+  <p>Verify exam answers against official NTA keys; third-party resources may contain errors.</p>
+</section>
 </main>
 </div>
 </div>
