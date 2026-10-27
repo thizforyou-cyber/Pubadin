@@ -3,213 +3,230 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pubadin | UGC NET Public Administration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pubadin | Public Administration Study Hub</title>
 <style>
-:root {
-  --bg:#f5f7fb; --card:#fff; --text:#17233c;
-  --muted:#66738a; --primary:#4f46e5; --line:#e4e8f1;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0; font-family:Arial,sans-serif;
-  background:var(--bg); color:var(--text);
-}
-header {
-  background:#17233c; color:white; padding:20px 6%;
-  display:flex; justify-content:space-between; align-items:center;
-  gap:12px; flex-wrap:wrap;
-}
-.brand { font-size:24px; font-weight:800; }
-.brand span { color:#a5b4fc; }
-header p { margin:5px 0 0; color:#d4d9e7; font-size:13px; }
-main { max-width:1100px; margin:auto; padding:26px 18px 50px; }
-.hero {
-  background:linear-gradient(120deg,#4f46e5,#7c3aed);
-  color:white; padding:28px; border-radius:20px; margin-bottom:22px;
-}
-.hero h1 { margin:0 0 10px; font-size:clamp(25px,4vw,36px); }
-.hero p { line-height:1.6; max-width:650px; }
-button,input { font:inherit; }
-button {
-  cursor:pointer; border:0; border-radius:10px; padding:11px 15px;
-  background:var(--primary); color:white; font-weight:700;
-}
-button:hover { opacity:.88; }
-.hero button { background:white; color:#4338ca; }
-.search { width:100%; padding:14px; border:1px solid var(--line);
-  border-radius:12px; margin:0 0 22px; background:white; }
-.stats,.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; }
-.stat,.card { background:var(--card); padding:19px; border:1px solid var(--line); border-radius:15px; }
-.stat strong { display:block; font-size:28px; margin:8px 0; }
-.stat small,.muted { color:var(--muted); }
-.section-title { margin:30px 0 14px; }
-.card h3 { margin:8px 0; }
-.card p { color:var(--muted); line-height:1.5; }
-.card button { margin-top:7px; }
-.tag { color:#4f46e5; font-weight:700; font-size:12px; text-transform:uppercase; }
-.progress { height:8px; background:#e5e7eb; border-radius:9px; overflow:hidden; margin:12px 0; }
-.progress div { height:100%; width:0; background:#4f46e5; transition:width .2s; }
-.panel { background:white; padding:22px; border:1px solid var(--line); border-radius:16px; margin-top:20px; }
-.option { display:block; text-align:left; width:100%; background:#f0f2ff; color:#17233c; margin:9px 0; }
-.option.correct { background:#dcfce7; }
-.option.wrong { background:#fee2e2; }
-footer { text-align:center; padding:25px; color:var(--muted); font-size:13px; }
-[hidden] { display:none !important; }
+:root{--bg:#f5f6fb;--card:#fff;--ink:#18233b;--muted:#667085;--brand:#5145df;--line:#e5e7ef;--green:#16835d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px Arial,sans-serif}
+header{background:#18233b;color:white;padding:20px max(20px,calc((100% - 1100px)/2))}
+.logo{font-size:27px;font-weight:800}.logo span{color:#aaa4ff}
+header p{color:#d3d8e6;margin:7px 0 0}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+nav button{background:#303b55;color:white}
+nav button.active{background:#7770ff}
+main{max-width:1100px;margin:auto;padding:22px 16px 50px}
+button{border:0;border-radius:9px;padding:11px 14px;background:var(--brand);color:white;font-weight:700;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+input,select{padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:white;color:var(--ink);width:100%}
+.hero{background:linear-gradient(120deg,#5145df,#8066ed);color:white;border-radius:18px;padding:26px;margin-bottom:18px}
+.hero h1{font-size:clamp(25px,5vw,38px);margin:0 0 10px}
+.hero p{line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px}
+.card h3{margin:9px 0}.card p,.muted{color:var(--muted);line-height:1.55}
+.tag{font-size:12px;font-weight:bold;color:var(--brand);text-transform:uppercase}
+.stat{font-size:27px;font-weight:800;margin:9px 0}
+.section{margin-top:24px}
+h2{font-size:23px}
+.stack{display:grid;gap:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.secondary{background:#ecebff;color:#3428b8}
+.light{background:#edf1f7;color:#27334b}
+.good{color:var(--green);font-weight:bold}
+.bad{color:#b42318;font-weight:bold}
+.option{display:block;width:100%;text-align:left;background:#f0f1ff;color:var(--ink);margin:9px 0}
+.option.right{background:#d9f7e8}.option.wrong{background:#ffe4e4}
+.progress{height:9px;background:#e8eaf2;border-radius:9px;overflow:hidden;margin:12px 0}
+.progress div{height:100%;background:var(--brand);width:0}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:13px}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
 <header>
-  <div>
-    <div class="brand">Pub<span>adin</span> 📚</div>
-    <p>Your UGC NET Public Administration study companion</p>
-  </div>
-  <div>Learn · Practise · Revise</div>
+  <div class="logo">Pub<span>adin</span> 📚</div>
+  <p>Your connected UGC NET Paper 2 Public Administration study hub</p>
+  <nav id="nav">
+    <button class="active" data-page="home">Home</button>
+    <button data-page="syllabus">Syllabus</button>
+    <button data-page="learn">Learn topics</button>
+    <button data-page="practice">Practice</button>
+    <button data-page="revision">Revision</button>
+    <button data-page="mindmap">Mind maps</button>
+    <button data-page="progress">My progress</button>
+  </nav>
 </header>
 
 <main>
-  <section class="hero">
-    <h1>Small steps. Strong concepts. Better revision.</h1>
-    <p>Explore the syllabus, practise questions, revise key concepts and build your preparation one day at a time.</p>
-    <button onclick="showSection('syllabus')">Explore syllabus →</button>
-  </section>
-
-  <input class="search" id="search" placeholder="🔎 Search units, topics or keywords..." aria-label="Search study content">
-
-  <div class="stats">
-    <div class="stat"><span class="muted">Units explored</span><strong id="unitCount">0 / 10</strong><small>Mark a unit as studied</small></div>
-    <div class="stat"><span class="muted">Questions answered</span><strong id="questionCount">0</strong><small>Practice at your own pace</small></div>
-    <div class="stat"><span class="muted">Correct answers</span><strong id="correctCount">0</strong><small>Build accuracy over time</small></div>
+<section id="home" class="page">
+  <div class="hero">
+    <h1>Learn smarter. Remember longer.</h1>
+    <p>Study concepts, practise questions, discover connections and revise the topics that need more attention.</p>
+    <button onclick="go('syllabus')">Explore your syllabus →</button>
   </div>
-
-  <h2 class="section-title">Your study space</h2>
-  <div class="cards">
-    <article class="card"><div class="tag">01 · Learn</div><h3>Complete syllabus</h3><p>Explore the ten broad units of Public Administration.</p><button onclick="showSection('syllabus')">Open syllabus</button></article>
-    <article class="card"><div class="tag">02 · Practise</div><h3>PYQ practice</h3><p>Try sample questions with instant feedback.</p><button onclick="showSection('quiz')">Start practice</button></article>
-    <article class="card"><div class="tag">03 · Remember</div><h3>Flashcards</h3><p>Test your recall of important concepts.</p><button onclick="showSection('cards')">Revise now</button></article>
-    <article class="card"><div class="tag">04 · Improve</div><h3>Study progress</h3><p>Track units completed and questions answered.</p><button onclick="showSection('progress')">View progress</button></article>
+  <div class="grid">
+    <div class="card"><div class="tag">Syllabus</div><div class="stat" id="homeUnits">0/10</div><p>Units marked studied</p><button onclick="go('syllabus')">Continue learning</button></div>
+    <div class="card"><div class="tag">Practice</div><div class="stat" id="homeQuestions">0</div><p>Questions answered</p><button onclick="go('practice')">Practise now</button></div>
+    <div class="card"><div class="tag">Accuracy</div><div class="stat" id="homeAccuracy">0%</div><p>Correct answers</p><button onclick="go('progress')">Check progress</button></div>
+    <div class="card"><div class="tag">Revision</div><div class="stat" id="homeSaved">0</div><p>Questions saved for revision</p><button onclick="go('revision')">Revise now</button></div>
   </div>
+  <div class="section">
+    <h2>Choose your next activity</h2>
+    <div class="grid">
+      <div class="card"><h3>📘 Understand</h3><p>Learn definitions and concepts with simple examples.</p><button onclick="go('learn')">Learn topics</button></div>
+      <div class="card"><h3>🎯 Practise</h3><p>Answer questions and read explanations immediately.</p><button onclick="go('practice')">Start quiz</button></div>
+      <div class="card"><h3>🧠 Remember</h3><p>Use flashcards and revisit saved questions.</p><button onclick="go('revision')">Open revision</button></div>
+    </div>
+  </div>
+</section>
 
-  <section class="panel" id="syllabus" hidden>
-    <h2>Public Administration syllabus</h2>
-    <p class="muted">A starter list of ten broad units. Check the current official UGC NET syllabus to confirm exact unit titles and subtopics.</p>
-    <div id="unitList" class="cards"></div>
-  </section>
+<section id="syllabus" class="page" hidden>
+  <h2>Explore the syllabus</h2>
+  <p class="muted">Starter unit map. Check the current official UGC NET syllabus for the exact prescribed unit titles and subtopics.</p>
+  <input id="unitSearch" placeholder="Search units or topics...">
+  <div class="grid section" id="unitGrid"></div>
+</section>
 
-  <section class="panel" id="quiz" hidden>
-    <div class="tag">Practice zone</div>
-    <h2 id="quizTitle">Sample question</h2>
-    <p id="question"></p>
-    <div id="options"></div>
-    <p id="feedback" aria-live="polite"></p>
-    <button id="nextQuestion" onclick="nextQuestion()" hidden>Next question →</button>
-    <p class="muted">These are starter practice questions, not a verified collection of official previous-year questions.</p>
-  </section>
+<section id="learn" class="page" hidden>
+  <h2>Topic learning centre</h2>
+  <p class="muted">Choose a topic to see a beginner-friendly explanation and a practical example.</p>
+  <select id="topicSelect"></select>
+  <div class="panel section" id="lesson"></div>
+  <div class="actions">
+    <button onclick="markCurrentTopic()">Mark topic studied ✓</button>
+    <button class="secondary" onclick="go('practice')">Practise related concepts →</button>
+  </div>
+</section>
 
-  <section class="panel" id="cards" hidden>
-    <div class="tag">Active recall</div>
-    <h2>Flashcards</h2>
-    <p id="flashQuestion"></p>
-    <p id="flashAnswer" hidden></p>
-    <button id="reveal" onclick="revealCard()">Reveal answer</button>
-    <button onclick="nextCard()">Next flashcard →</button>
-  </section>
+<section id="practice" class="page" hidden>
+  <h2>Practice and understand</h2>
+  <p class="muted">These are starter practice questions, not a verified official previous-year question bank.</p>
+  <select id="quizFilter">
+    <option value="all">All topics</option>
+  </select>
+  <div class="panel section">
+    <div class="tag" id="qLabel">Practice question</div>
+    <h3 id="qText"></h3>
+    <div id="qOptions"></div>
+    <p id="qFeedback" aria-live="polite"></p>
+    <div class="actions">
+      <button id="saveQuestion" class="secondary" onclick="toggleSaved()">☆ Save for revision</button>
+      <button id="nextQ" onclick="nextQuestion()" hidden>Next question →</button>
+    </div>
+    <p class="muted" id="qCounter"></p>
+  </div>
+</section>
 
-  <section class="panel" id="progress" hidden>
-    <h2>Your progress</h2>
-    <p id="progressText">You have just started. Every completed session counts!</p>
-    <div class="progress"><div id="progressBar"></div></div>
-    <button onclick="resetProgress()">Reset progress</button>
-    <p class="muted">Progress is saved only in this browser on this device.</p>
-  </section>
+<section id="revision" class="page" hidden>
+  <h2>Revision centre</h2>
+  <div class="grid">
+    <div class="card"><h3>Flashcards</h3><p>Try to recall the answer before revealing it.</p>
+      <div class="panel"><div class="tag" id="flashTopic"></div><h3 id="flashQ"></h3><p id="flashA" hidden></p>
+      <div class="actions"><button id="revealBtn" onclick="revealFlash()">Reveal answer</button><button class="secondary" onclick="nextFlash()">Next card →</button></div></div>
+    </div>
+    <div class="card"><h3>Saved questions</h3><p>Questions you want to review again.</p><div id="savedList" class="stack"></div></div>
+  </div>
+</section>
+
+<section id="mindmap" class="page" hidden>
+  <h2>Concept connections</h2>
+  <p class="muted">Starter text-based mind maps. Select a map to see how the main ideas connect.</p>
+  <div class="grid" id="mapGrid"></div>
+  <div class="panel section" id="mapDetail">Choose a mind map above.</div>
+</section>
+
+<section id="progress" class="page" hidden>
+  <h2>Your learning progress</h2>
+  <div class="grid">
+    <div class="card"><p class="muted">Units studied</p><div class="stat" id="pUnits"></div></div>
+    <div class="card"><p class="muted">Questions answered</p><div class="stat" id="pAnswered"></div></div>
+    <div class="card"><p class="muted">Correct answers</p><div class="stat" id="pCorrect"></div></div>
+    <div class="card"><p class="muted">Accuracy</p><div class="stat" id="pAccuracy"></div></div>
+  </div>
+  <div class="panel section"><h3>Unit completion</h3><div class="progress"><div id="bar"></div></div><p id="pMessage"></p><h3>Topics marked studied</h3><div id="doneTopics"></div></div>
+  <div class="actions"><button class="secondary" onclick="exportData()">Export progress backup</button><button class="light" onclick="resetData()">Reset all progress</button></div>
+  <p class="muted">Your data is saved in this browser on this device. Export a backup before clearing browser data.</p>
+</section>
 </main>
 <footer>Pubadin · Learn consistently, revise intelligently.</footer>
 
 <script>
-const units = [
-["Introduction to Public Administration","Meaning, scope, evolution and approaches"],
-["Administrative Thought","Taylor, Fayol, Weber, Mayo and major thinkers"],
-["Indian Administration","Constitution, Union, state and district administration"],
-["Development Administration","Development, governance and public policy"],
-["Personnel Administration","Recruitment, training, promotion and civil services"],
-["Public Policy","Policy formulation, implementation and evaluation"],
-["Governance and Good Governance","Accountability, transparency and citizen participation"],
-["Comparative Public Administration","Comparative approaches and administrative systems"],
-["Financial Administration","Budgeting, audit and financial control"],
-["Research Methods","Research design, methods, data and analysis"]
+const units=[
+["Introduction to Public Administration","Meaning, scope, evolution and approaches","Meaning and scope"],
+["Administrative Thought","Classical, human relations and behavioural approaches","Scientific management"],
+["Indian Administration","Constitutional framework and administrative institutions","Constitutional administration"],
+["Development Administration","Development, change and administration","Development administration"],
+["Personnel Administration","Recruitment, training, promotion and civil services","Personnel administration"],
+["Public Policy","Policy formulation, implementation and evaluation","Public policy"],
+["Governance and Good Governance","Accountability, transparency and citizen participation","Governance"],
+["Comparative Public Administration","Comparative approaches and administrative systems","Comparative administration"],
+["Financial Administration","Budgeting, audit and financial control","Financial administration"],
+["Research Methods","Research design, methods, data and analysis","Research methods"]
 ];
-
-const questions = [
-{q:"Who is commonly associated with the principles of scientific management?",o:["Max Weber","F. W. Taylor","Herbert Simon","Elton Mayo"],a:1,e:"F. W. Taylor is associated with scientific management."},
-{q:"Who wrote the book Administrative Behavior?",o:["Herbert A. Simon","Woodrow Wilson","Henri Fayol","Luther Gulick"],a:0,e:"Herbert A. Simon published Administrative Behavior in 1947."},
-{q:"Which thinker is associated with the ideal type of bureaucracy?",o:["Abraham Maslow","Max Weber","Chester Barnard","F. W. Taylor"],a:1,e:"Max Weber developed the influential ideal-type model of bureaucracy."},
-{q:"The principle of unity of command is associated with which thinker?",o:["Henri Fayol","Mary Parker Follett","Herbert Simon","Dwight Waldo"],a:0,e:"Henri Fayol identified unity of command as a management principle."},
-{q:"Which part of the Indian Constitution deals with the Union Public Service Commission?",o:["Part X","Part XIV","Part III","Part V only"],a:1,e:"Part XIV covers services under the Union and the States, including provisions for Public Service Commissions."}
+const lessons=[
+{t:"Meaning and scope",u:0,def:"Public Administration concerns the organisation and management of public programmes and the implementation of government policy.",ex:"A district administration coordinating flood relief is an example of public administration.",tip:"Remember: public policy sets direction; public administration helps put it into practice."},
+{t:"Scientific management",u:1,def:"F. W. Taylor studied how work could be organised systematically to improve efficiency, including through work study and standardisation.",ex:"A public office studies its application process to remove unnecessary steps and reduce waiting time.",tip:"Taylor = scientific management and efficiency."},
+{t:"Constitutional administration",u:2,def:"Indian administration operates within a constitutional framework that distributes powers, establishes institutions and places limits on public authority.",ex:"A public authority must act within its legal powers and respect constitutional rights.",tip:"Constitutional government means public power is legally limited."},
+{t:"Development administration",u:3,def:"Development administration focuses on organising administrative capacity to implement programmes for social and economic development.",ex:"Officials coordinating rural employment, public health and local infrastructure programmes.",tip:"Development administration = administration directed towards planned change."},
+{t:"Personnel administration",u:4,def:"Personnel administration covers the management of public employees, including recruitment, training, performance and promotion.",ex:"A civil service training institute prepares newly recruited officers for their responsibilities.",tip:"Think of the employee lifecycle: recruit, train, develop and evaluate."},
+{t:"Public policy",u:5,def:"Public policy is a course of action or inaction adopted by public authorities in response to public issues.",ex:"A road safety programme may involve identifying accident causes, designing interventions and evaluating results.",tip:"Policy cycle: problem, formulation, adoption, implementation and evaluation."},
+{t:"Governance",u:6,def:"Governance concerns how public decisions are made and implemented, including relationships among government, citizens and other institutions.",ex:"Publishing service standards and complaint outcomes can strengthen accountability.",tip:"Remember participation, transparency, accountability and responsiveness."},
+{t:"Comparative administration",u:7,def:"Comparative Public Administration examines administrative systems across different contexts to identify similarities, differences and explanatory factors.",ex:"Comparing local government arrangements in two countries.",tip:"Compare institutions in context rather than assuming one model fits everywhere."},
+{t:"Financial administration",u:8,def:"Financial administration manages public resources through budgeting, expenditure control, accounting and audit.",ex:"A department estimates programme costs and later reports how public funds were used.",tip:"Budget, spend, account and audit."},
+{t:"Research methods",u:9,def:"Research methods provide systematic ways to define a problem, collect evidence, analyse information and draw conclusions.",ex:"A survey assessing citizens' satisfaction with a public service.",tip:"Start with a question, choose a method, collect data and analyse evidence."}
 ];
-
-const flashcards = [
-["Who is associated with scientific management?","Frederick Winslow Taylor."],
-["What is unity of command?","The principle that an employee should receive orders from one superior."],
-["What is public accountability?","The obligation of public officials to explain and justify their actions and face appropriate consequences."],
-["What is bureaucracy in Weber's model?","A formal organisation characterised by hierarchy, rules, defined responsibilities and impersonal procedures."]
+const questions=[
+{u:1,t:"Scientific management",q:"Who is associated with scientific management?",o:["Max Weber","F. W. Taylor","Herbert Simon","Elton Mayo"],a:1,e:"F. W. Taylor is associated with scientific management and systematic work study."},
+{u:1,t:"Administrative Thought",q:"Who wrote Administrative Behavior?",o:["Herbert A. Simon","Henri Fayol","Luther Gulick","Max Weber"],a:0,e:"Herbert A. Simon's Administrative Behavior was published in 1947."},
+{u:1,t:"Administrative Thought",q:"The ideal type of bureaucracy is associated with:",o:["Max Weber","Abraham Maslow","F. W. Taylor","Mary Parker Follett"],a:0,e:"Max Weber developed the influential ideal-type model of bureaucracy."},
+{u:1,t:"Administrative Thought",q:"Unity of command is commonly associated with:",o:["Henri Fayol","Herbert Simon","Elton Mayo","Dwight Waldo"],a:0,e:"Henri Fayol included unity of command among his principles of management."},
+{u:2,t:"Constitutional administration",q:"Which Part of the Indian Constitution contains provisions on services under the Union and the States?",o:["Part III","Part XIV","Part I","Part IX"],a:1,e:"Part XIV addresses services under the Union and the States, including Public Service Commissions."},
+{u:5,t:"Public policy",q:"Which is a common stage in the policy process?",o:["Policy evaluation","Judicial sentencing only","Private recruitment only","Personal budgeting only"],a:0,e:"Policy evaluation examines implementation and results. Policy-cycle models vary."},
+{u:6,t:"Governance",q:"Which practice most directly supports administrative transparency?",o:["Withholding all service standards","Publishing relevant public information","Removing complaint channels","Avoiding performance reports"],a:1,e:"Publishing relevant information helps citizens understand decisions and services."},
+{u:8,t:"Financial administration",q:"Which activity examines public accounts and financial compliance?",o:["Audit","Recruitment","Delegation","Socialisation"],a:0,e:"Audit examines financial records and may assess compliance or performance, depending on its mandate."},
+{u:9,t:"Research methods",q:"A questionnaire is commonly used to:",o:["Collect responses from participants","Approve a national budget","Appoint civil servants","Issue court judgments"],a:0,e:"Questionnaires are instruments for collecting structured responses from participants."},
+{u:0,t:"Meaning and scope",q:"Implementing a government welfare programme is primarily an example of:",o:["Public administration","Private household management only","A purely personal decision","A mathematical proof"],a:0,e:"Public administration includes organising and implementing public programmes."}
 ];
-
-let answered = Number(localStorage.getItem("pubadin_answered") || 0);
-let correct = Number(localStorage.getItem("pubadin_correct") || 0);
-let studied = JSON.parse(localStorage.getItem("pubadin_studied") || "[]");
-let qi = 0, fi = 0, locked = false;
-
-function showSection(id) {
-  ["syllabus","quiz","cards","progress"].forEach(x => document.getElementById(x).hidden = x !== id);
-  if(id==="syllabus") renderUnits();
-  if(id==="quiz") renderQuestion();
-  if(id==="cards") renderFlashcard();
-  if(id==="progress") renderProgress();
-  document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
-}
-function renderUnits(filter="") {
-  const list = document.getElementById("unitList");
-  list.innerHTML = "";
-  units.forEach((u,i) => {
-    if(!(u.join(" ")+" Unit "+(i+1)).toLowerCase().includes(filter.toLowerCase())) return;
-    const el = document.createElement("article");
-    el.className="card";
-    el.innerHTML = `<div class="tag">Unit ${i+1}</div><h3></h3><p></p><button></button>`;
-    el.querySelector("h3").textContent=u[0];
-    el.querySelector("p").textContent=u[1];
-    const b=el.querySelector("button");
-    b.textContent=studied.includes(i)?"✓ Studied":"Mark as studied";
-    b.onclick=()=>{studied=studied.includes(i)?studied.filter(n=>n!==i):[...studied,i];localStorage.setItem("pubadin_studied",JSON.stringify(studied));renderUnits(document.getElementById("search").value);updateStats();};
-    list.appendChild(el);
-  });
-}
-function renderQuestion() {
-  const q=questions[qi%questions.length]; locked=false;
-  document.getElementById("quizTitle").textContent=`Question ${(qi%questions.length)+1} of ${questions.length}`;
-  document.getElementById("question").textContent=q.q;
-  document.getElementById("feedback").textContent="";
-  document.getElementById("nextQuestion").hidden=true;
-  const box=document.getElementById("options");box.innerHTML="";
-  q.o.forEach((option,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+option;b.onclick=()=>checkAnswer(i,b);box.appendChild(b);});
-}
-function checkAnswer(i,button) {
-  if(locked)return;locked=true;
-  answered++;const q=questions[qi%questions.length];
-  document.querySelectorAll("#options button").forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add("correct");});
-  if(i===q.a){correct++;document.getElementById("feedback").textContent="Correct! "+q.e;}
-  else document.getElementById("feedback").textContent="Not quite. "+q.e;
-  localStorage.setItem("pubadin_answered",answered);localStorage.setItem("pubadin_correct",correct);
-  document.getElementById("nextQuestion").hidden=false;updateStats();
-}
-function nextQuestion(){qi++;renderQuestion();}
-function renderFlashcard(){document.getElementById("flashQuestion").textContent=flashcards[fi%flashcards.length][0];document.getElementById("flashAnswer").textContent=flashcards[fi%flashcards.length][1];document.getElementById("flashAnswer").hidden=true;document.getElementById("reveal").hidden=false;}
-function revealCard(){document.getElementById("flashAnswer").hidden=false;document.getElementById("reveal").hidden=true;}
-function nextCard(){fi++;renderFlashcard();}
-function updateStats(){document.getElementById("unitCount").textContent=studied.length+" / "+units.length;document.getElementById("questionCount").textContent=answered;document.getElementById("correctCount").textContent=correct;renderProgress();}
-function renderProgress(){const pct=Math.round(studied.length/units.length*100);document.getElementById("progressText").textContent=`${studied.length} of ${units.length} units marked studied. ${answered} questions answered; ${correct} correct.`;document.getElementById("progressBar").style.width=pct+"%";}
-function resetProgress(){if(confirm("Reset your saved study progress on this browser?")){answered=0;correct=0;studied=[];["pubadin_answered","pubadin_correct","pubadin_studied"].forEach(k=>localStorage.removeItem(k));updateStats();renderUnits();}}
-document.getElementById("search").addEventListener("input",e=>{const q=e.target.value.trim();renderUnits(q);if(q){document.getElementById("syllabus").hidden=false;}});
-updateStats();
+const cards=[
+["Administrative Thought","Who is associated with scientific management?","F. W. Taylor."],
+["Administrative Thought","What is unity of command?","The principle that an employee should receive orders from one superior."],
+["Public Policy","What is policy evaluation?","Systematic assessment of a policy's implementation, outputs or outcomes."],
+["Governance","What is accountability?","The obligation to explain and justify actions and face appropriate scrutiny or consequences."],
+["Financial Administration","What is a public budget?","A financial plan estimating public revenue and expenditure for a period."],
+["Research Methods","What is a research hypothesis?","A testable proposition about a relationship or expected result."]
+];
+const maps=[
+["Administrative Thought",["Taylor → Scientific management","Fayol → Management principles","Weber → Bureaucracy","Mayo → Human relations","Simon → Decision-making"]],
+["Public Policy",["Public problem","↓ Agenda setting","Policy formulation","↓ Adoption","Implementation","↓ Monitoring","Evaluation and feedback"]],
+["Governance",["Citizen participation","Transparency","Accountability","Rule of law","Responsiveness","↓ Together support","Good governance"]],
+["Financial Administration",["Budget preparation","Legislative approval","Execution of expenditure","Accounting","Audit and oversight"]]
+];
+const read=(k,d)=>{try{return JSON.parse(localStorage.getItem("pubadin2_"+k))??d}catch{return d}};
+let studied=read("studied",[]),doneTopics=read("topics",[]),answered=read("answered",0),correct=read("correct",0),saved=read("saved",[]),qi=0,fi=0,locked=false;
+function persist(){localStorage.setItem("pubadin2_studied",JSON.stringify(studied));localStorage.setItem("pubadin2_topics",JSON.stringify(doneTopics));localStorage.setItem("pubadin2_answered",answered);localStorage.setItem("pubadin2_correct",correct);localStorage.setItem("pubadin2_saved",JSON.stringify(saved));}
+function go(id){document.querySelectorAll(".page").forEach(x=>x.hidden=x.id!==id);document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));if(id==="syllabus")renderUnits();if(id==="learn")renderLesson();if(id==="practice")renderQuestion();if(id==="revision"){renderFlash();renderSaved()}if(id==="mindmap")renderMaps();if(id==="progress")renderProgress();updateHome();window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>go(b.dataset.page));
+function renderUnits(filter=""){const box=document.getElementById("unitGrid");box.innerHTML="";units.forEach((u,i)=>{if(!(u.join(" ")+" "+(i+1)).toLowerCase().includes(filter.toLowerCase()))return;const el=document.createElement("div");el.className="card";el.innerHTML=`<div class="tag">Unit ${i+1}</div><h3></h3><p class="muted"></p><div class="actions"><button class="learnBtn">Learn topics</button><button class="secondary markBtn"></button></div>`;el.querySelector("h3").textContent=u[0];el.querySelector("p").textContent=u[1];el.querySelector(".learnBtn").onclick=()=>{document.getElementById("topicSelect").value=String(i);go("learn")};const b=el.querySelector(".markBtn");b.textContent=studied.includes(i)?"✓ Studied":"Mark studied";b.onclick=()=>{studied=studied.includes(i)?studied.filter(n=>n!==i):[...studied,i];persist();renderUnits(filter);updateHome()};box.appendChild(el)})}
+document.getElementById("unitSearch").oninput=e=>renderUnits(e.target.value);
+function fillSelects(){const ts=document.getElementById("topicSelect"),qs=document.getElementById("quizFilter");lessons.forEach((l,i)=>{let o=document.createElement("option");o.value=i;o.textContent="Unit "+(l.u+1)+": "+l.t;ts.appendChild(o)});const all=document.createElement("option");all.value="all";all.textContent="All topics";qs.appendChild(all);[...new Set(questions.map(q=>q.t))].forEach(t=>{let o=document.createElement("option");o.value=t;o.textContent=t;qs.appendChild(o)});ts.onchange=renderLesson;qs.onchange=()=>{qi=0;renderQuestion()}}
+function renderLesson(){const l=lessons[Number(document.getElementById("topicSelect").value)||0];document.getElementById("lesson").innerHTML="";const tag=document.createElement("div");tag.className="tag";tag.textContent="Unit "+(l.u+1)+" · "+l.t;const h=document.createElement("h3");h.textContent="Understand the concept";const p=document.createElement("p");p.textContent=l.def;const h2=document.createElement("h3");h2.textContent="Real-life example";const ex=document.createElement("p");ex.textContent=l.ex;const tip=document.createElement("p");tip.className="good";tip.textContent="Memory cue: "+l.tip;document.getElementById("lesson").append(tag,h,p,h2,ex,tip)}
+function markCurrentTopic(){const l=lessons[Number(document.getElementById("topicSelect").value)||0];if(!doneTopics.includes(l.t))doneTopics.push(l.t);if(!studied.includes(l.u))studied.push(l.u);persist();updateHome();alert("Topic progress saved in this browser.");}
+function currentQs(){const f=document.getElementById("quizFilter").value;return questions.map((q,i)=>({...q,original:i})).filter(q=>f==="all"||q.t===f)}
+function renderQuestion(){const list=currentQs();if(!list.length)return;qi=qi%list.length;locked=false;const q=list[qi];document.getElementById("qLabel").textContent="Unit "+(q.u+1)+" · "+q.t;document.getElementById("qText").textContent=q.q;document.getElementById("qFeedback").textContent="";document.getElementById("nextQ").hidden=true;document.getElementById("qCounter").textContent="Question "+(qi+1)+" of "+list.length;document.getElementById("saveQuestion").textContent=saved.includes(q.original)?"★ Saved for revision":"☆ Save for revision";const box=document.getElementById("qOptions");box.innerHTML="";q.o.forEach((s,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+s;b.onclick=()=>answer(i,b,q);box.appendChild(b)})}
+function answer(i,b,q){if(locked)return;locked=true;answered++;if(i===q.a)correct++;document.querySelectorAll("#qOptions button").forEach((x,j)=>{x.disabled=true;if(j===q.a)x.classList.add("right")});if(i!==q.a)b.classList.add("wrong");const fb=document.getElementById("qFeedback");fb.className=i===q.a?"good":"bad";fb.textContent=(i===q.a?"Correct! ":"Review this concept. ")+q.e;document.getElementById("nextQ").hidden=false;persist();updateHome()}
+function nextQuestion(){const list=currentQs();qi=(qi+1)%list.length;renderQuestion()}
+function toggleSaved(){const q=currentQs()[qi];if(!q)return;if(saved.includes(q.original))saved=saved.filter(x=>x!==q.original);else saved.push(q.original);persist();renderQuestion();renderSaved()}
+function renderFlash(){const c=cards[fi%cards.length];document.getElementById("flashTopic").textContent=c[0];document.getElementById("flashQ").textContent=c[1];document.getElementById("flashA").textContent=c[2];document.getElementById("flashA").hidden=true;document.getElementById("revealBtn").hidden=false}
+function revealFlash(){document.getElementById("flashA").hidden=false;document.getElementById("revealBtn").hidden=true}
+function nextFlash(){fi++;renderFlash()}
+function renderSaved(){const box=document.getElementById("savedList");box.innerHTML="";if(!saved.length){box.textContent="No saved questions yet. Save a question from Practice to review it here.";return}saved.forEach(i=>{const q=questions[i];if(!q)return;const el=document.createElement("div");el.className="panel";const h=document.createElement("strong");h.textContent=q.q;const p=document.createElement("p");p.textContent="Answer: "+q.o[q.a];const e=document.createElement("p");e.textContent=q.e;const b=document.createElement("button");b.className="light";b.textContent="Remove";b.onclick=()=>{saved=saved.filter(n=>n!==i);persist();renderSaved();updateHome()};el.append(h,p,e,b);box.appendChild(el)})}
+function renderMaps(){const box=document.getElementById("mapGrid");box.innerHTML="";maps.forEach((m,i)=>{const el=document.createElement("div");el.className="card";const h=document.createElement("h3");h.textContent=m[0];const p=document.createElement("p");p.textContent=m[1].join("  →  ");const b=document.createElement("button");b.textContent="Explore connection";b.onclick=()=>{const d=document.getElementById("mapDetail");d.innerHTML="";const h=document.createElement("h3");h.textContent=m[0];const ul=document.createElement("ol");m[1].forEach(s=>{const li=document.createElement("li");li.textContent=s;ul.appendChild(li)});d.append(h,ul)};el.append(h,p,b);box.appendChild(el)})}
+function updateHome(){const pct=answered?Math.round(correct/answered*100):0;document.getElementById("homeUnits").textContent=studied.length+"/10";document.getElementById("homeQuestions").textContent=answered;document.getElementById("homeAccuracy").textContent=pct+"%";document.getElementById("homeSaved").textContent=saved.length}
+function renderProgress(){const pct=Math.round(studied.length/units.length*100);document.getElementById("pUnits").textContent=studied.length+"/10";document.getElementById("pAnswered").textContent=answered;document.getElementById("pCorrect").textContent=correct;document.getElementById("pAccuracy").textContent=(answered?Math.round(correct/answered*100):0)+"%";document.getElementById("bar").style.width=pct+"%";document.getElementById("pMessage").textContent=pct+"% of units marked studied. Saved questions: "+saved.length+".";document.getElementById("doneTopics").textContent=doneTopics.length?doneTopics.join(" · "):"No topics marked studied yet."}
+function exportData(){const data={studied,doneTopics,answered,correct,saved};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="pubadin-progress.json";a.click();URL.revokeObjectURL(a.href)}
+function resetData(){if(!confirm("Delete all Pubadin progress saved in this browser? Export a backup first if needed."))return;studied=[];doneTopics=[];answered=0;correct=0;saved=[];persist();updateHome();renderProgress();renderUnits();renderSaved()}
+fillSelects();renderUnits();renderLesson();renderQuestion();renderFlash();renderMaps();updateHome();
 </script>
 </body>
 </html>
